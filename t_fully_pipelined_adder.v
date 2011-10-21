@@ -1,6 +1,7 @@
 /* file: t_fully_pipelined_adder.v
  * Engineer: Spenser Gilliland <Spenser309@gmail.com>
  * Company: IIT ECASP Lab
+ * License: GPLv3
  * Date: 10/20/2011
  */
  
