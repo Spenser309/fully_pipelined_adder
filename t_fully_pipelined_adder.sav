@@ -1,0 +1,65 @@
+[timestart] 6
+[size] 1000 600
+[pos] -1 -1
+*-5.634923 49 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] t_fully_pipelined_adder.
+[treeopen] t_fully_pipelined_adder.uut.
+[treeopen] t_fully_pipelined_adder.uut.comp_gen[0].
+@200
+-Outputs
+@28
+t_fully_pipelined_adder.clk[0]
+@24
+t_fully_pipelined_adder.s[3:0]
+@28
+t_fully_pipelined_adder.c[0]
+@200
+-Inputs
+@800024
+t_fully_pipelined_adder.a[3:0]
+@28
+(0)t_fully_pipelined_adder.a[3:0]
+(1)t_fully_pipelined_adder.a[3:0]
+(2)t_fully_pipelined_adder.a[3:0]
+@29
+(3)t_fully_pipelined_adder.a[3:0]
+@1001200
+-group_end
+@24
+t_fully_pipelined_adder.b[3:0]
+@28
+t_fully_pipelined_adder.cin[0]
+@200
+-Internal
+@22
+t_fully_pipelined_adder.uut.comp_gen[0].a_q[3:0]
+t_fully_pipelined_adder.uut.comp_gen[0].b_q[3:0]
+@28
+t_fully_pipelined_adder.uut.comp_gen[0].c_q[0]
+t_fully_pipelined_adder.uut.comp_gen[0].s_i[0]
+@24
+t_fully_pipelined_adder.uut.comp_gen[1].a_q[3:0]
+t_fully_pipelined_adder.uut.comp_gen[1].b_q[3:1]
+@28
+t_fully_pipelined_adder.uut.comp_gen[1].c_q[0]
+t_fully_pipelined_adder.uut.comp_gen[1].s_i[0]
+@22
+t_fully_pipelined_adder.uut.comp_gen[2].a_q[3:0]
+@28
+t_fully_pipelined_adder.uut.comp_gen[2].b_q[3:2]
+t_fully_pipelined_adder.uut.comp_gen[2].c_q[0]
+t_fully_pipelined_adder.uut.comp_gen[2].s_i[0]
+@22
+t_fully_pipelined_adder.uut.comp_gen[3].a_q[3:0]
+@28
+t_fully_pipelined_adder.uut.comp_gen[3].b_q[3]
+t_fully_pipelined_adder.uut.comp_gen[3].c_q[0]
+t_fully_pipelined_adder.uut.comp_gen[3].s_i[0]
+t_fully_pipelined_adder.uut.comp_gen[0].u_add.a[0]
+t_fully_pipelined_adder.uut.comp_gen[0].u_add.b[0]
+t_fully_pipelined_adder.uut.comp_gen[0].u_add.cin[0]
+t_fully_pipelined_adder.uut.comp_gen[0].u_add.c[0]
+t_fully_pipelined_adder.uut.comp_gen[0].u_add.s[0]
+t_fully_pipelined_adder.uut.comp_gen[0].u_add.t[0]
+[pattern_trace] 1
+[pattern_trace] 0

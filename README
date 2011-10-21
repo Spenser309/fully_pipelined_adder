@@ -1,0 +1,14 @@
+Engineer: Spenser Gilliland
+Company: IIT ECASP Lab
+Date: 10-20-2011
+
+Required Tools:
+   Icarus Verilog Simulator
+   GTKWave
+
+To run:
+   make run
+
+To view waveform:
+   make wave
+
