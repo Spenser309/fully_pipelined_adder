@@ -7,9 +7,9 @@
  
 module t_fully_pipelined_adder;
    parameter integer WIDTH = 3;
-   parameter integer ain[WIDTH-1:0] = '{0,1,2};
-   parameter integer bin[WIDTH-1:0] = '{2,1,3};
-   parameter reg     cin[WIDTH-1:0] = '{0,1,0};
+   parameter integer ain[WIDTH-1:0] = '{4,4,7};
+   parameter integer bin[WIDTH-1:0] = '{2,3,7};
+   parameter reg     cin[WIDTH-1:0] = '{1,1,1};
 
    reg             clk;
    reg [WIDTH-1:0] a;
