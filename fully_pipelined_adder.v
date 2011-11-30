@@ -12,17 +12,17 @@ module dff(q,d,en,clk);
     input wire en;
     input wire clk;
 
-    wire [WIDTH-1:0] xor_o;
-    wire l_d;
-    reg l_q;
-    wire gclk;
+//    wire [WIDTH-1:0] xor_o;
+//    wire l_d;
+//    reg l_q;
+//    wire gclk;
 
-    and(gclk, l_q, clk);
-    and(l_d, en, (| ( d ^ q)));
+//    and(gclk, l_q, clk);
+//    and(l_d, en, (| ( d ^ q)));
 
-    always@(l_d or clk)
-       if(clk == 1'b0)
-          l_q <= l_d;
+//    always@(l_d or clk)
+//       if(clk == 1'b0)
+//          l_q <= l_d;
 
     always @(posedge clk)
         q <= d;
