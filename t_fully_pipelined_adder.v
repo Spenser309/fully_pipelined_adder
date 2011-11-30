@@ -16,6 +16,7 @@ module t_fully_pipelined_adder;
    reg [WIDTH-1:0] b;
    reg             c;
    reg             en;
+   reg             rst;
 
    wire [WIDTH-1:0] s;
    wire             carry;
@@ -34,15 +35,17 @@ module t_fully_pipelined_adder;
       output         cout;
       
       begin
-         #(clk_period) 
+         //#(clk_period)
+         @(negedge clk)
          a = ain;
          b = bin;
          c = cin;
          
          #(clk_period*WIDTH)
-         sout = s;
-         cout = carry;
+         sout = {1'b0,s};
+         cout = {1'b0,carry};
          $display("%g %d + %d = %d (cin = %d, cout = %d)", $time, ain, bin, sout, cin, cout);
+         
          if ( sout == a + b + c) 
             $display("Passed");
          else
@@ -59,7 +62,8 @@ module t_fully_pipelined_adder;
    initial begin
       //$dumpfile("t_fully_pipelined_adder.lxt");
       $dumpvars(0, t_fully_pipelined_adder);
-      
+     
+      #(20) rst = 1'b0;
       /* Hold the clock at zero initially */
       clk = 1'b0;
       en = 1'b1;

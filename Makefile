@@ -27,7 +27,7 @@ syn: $(uut).timing $(uut).power $(uut).area $(uut).syn.log
 sim: $(sim).sim.log
 	cat $(sim).sim.log
 
-wave: run
+wave: $(sim).wlf 
 	vsim -view $(sim).wlf
 
 clean:
