@@ -81,7 +81,7 @@ module fully_pipelined_adder(s,c,a,b,cin,en,clk);
     endgenerate
     
     /* Output of the pipeline */
-    assign s = a_d[WIDTH];
-    assign c = c_d[WIDTH];
+    dff #(WIDTH) (s,a_d[WIDTH],en,clk);
+    dff #(1) (c,c_d[WIDTH], en, clk);
 endmodule
 
