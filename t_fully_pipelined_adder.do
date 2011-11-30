@@ -11,6 +11,6 @@ add wave -unsigned /*
 
 run
 
-write wave
+#write wave
 
 exit

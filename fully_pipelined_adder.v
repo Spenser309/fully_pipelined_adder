@@ -5,15 +5,18 @@
  * Date: 10/20/2011
  */
 
-module dff(q,d,en,clk);
+module dff(q,d,en,rst,clk);
     parameter integer WIDTH = 1;
     output reg [WIDTH-1:0] q;
     input wire [WIDTH-1:0] d;
     input wire en;
+    input wire rst;
     input wire clk;
 
     always @(posedge clk)
-       if(en == 1'b1) 
+       if(rst == 1'b1)
+          q <= 'b0;
+       else if(en == 1'b1) 
           q <= d;
         
 endmodule
@@ -30,7 +33,7 @@ module fulladder(c,s,a,b,cin);
     
 endmodule
 
-module fully_pipelined_adder(s,c,a,b,cin,en,clk);
+module fully_pipelined_adder(s,c,a,b,cin,en,rst,clk);
     parameter integer WIDTH = 4;   /* Width of Operands */
 
     output wire [WIDTH-1:0] s; /* Sum of operands valid after #(latency) cycles */
@@ -39,6 +42,7 @@ module fully_pipelined_adder(s,c,a,b,cin,en,clk);
     input wire [WIDTH-1:0] a, b; /* Operands */
     input wire cin;              /* Carry in */
     input wire en;
+    input wire rst;
     input wire clk;
     
     wire [WIDTH-1:0] a_d [WIDTH:0]; /* The WIDTH array element is the results at the end of the pipeline */
@@ -60,9 +64,9 @@ module fully_pipelined_adder(s,c,a,b,cin,en,clk);
             wire s_i;
             
             /* A total of 2*WIDTH-i+1 Registers are needed per stage*/
-            dff #(WIDTH)   a_dff(a_q, a_d[i], en, clk);
-            dff #(WIDTH-i) b_dff(b_q, b_d[i][WIDTH-1:i], en, clk);
-            dff #(1)       c_dff(c_q, c_d[i], en, clk);
+            dff #(WIDTH)   a_dff(a_q, a_d[i], en, rst, clk);
+            dff #(WIDTH-i) b_dff(b_q, b_d[i][WIDTH-1:i], en, rst, clk);
+            dff #(1)       c_dff(c_q, c_d[i], en, rst, clk);
             
             /* And a Full Adder */
             fulladder u_add(c_d[i+1], s_i, a_q[i], b_q[i], c_q);
