@@ -5,36 +5,46 @@
 #
 # Makefile for Verilog Program
 
-VERSION=0.0.1
+VERSION=0.0.2
 
 sim = t_fully_pipelined_adder
+uut = fully_pipelined_adder
 
-src_files = t_fully_pipelined_adder.v fully_pipelined_adder.v
+srcfiles = t_fully_pipelined_adder.v fully_pipelined_adder.v
+dist_files = Makefile README $(sim).do $(uut).scr alib-52 gscl45nm.db
 
-dist_files = Makefile README $(sim).sav
+.PHONY: all clean run syn wave dist
+.DEFAULT: all 
 
-.PHONY: all clean wave run dist
-.DEFAULT: run
+all: syn sim 
 
-all: $(sim) run
+syn: $(uut).timing $(uut).power $(uut).area $(uut).syn.log
+	cat $(uut).syn.log
+	cat $(uut).timing
+	cat $(uut).power
+	cat $(uut).area
+
+sim: $(sim).sim.log
+	cat $(sim).sim.log
+
+wave: run
+	vsim -view $(sim).wlf
 
 clean:
-	rm -rf $(sim).lxt $(sim)
-
-wave: $(sim).lxt
-	gtkwave -A $(sim).lxt
-
-run:
-	vvp $(sim) -lxt2
+	rm -rf transcript modelsim.ini work-sim work-syn default.svf $(sim).lxt *.log *.{power,timing,area} *.{wlf,vcd,saif}
 
 dist:
-	tar cvzf fully_pipelined_adder-$(VERSION).tar.gz $(dist_files) $(files)
+	tar cvzf fully_pipelined_adder-$(VERSION).tar.gz $(dist_files) $(srcfiles)
 
-$(sim).lxt: $(sim)
-	vvp $(sim) -lxt2
+%.timing %.power %.area %.syn.log: %.v %.scr t_%.saif
+	dc_shell -f $*.scr | tee $*.syn.log	
 
-$(sim): $(src_files)
-	iverilog -o $(sim) $(src_files)
+%.wlf %.sim.log: %.do $(srcfiles) 
+	vsim -c -do $*.do | tee $*.sim.log
 
+%.vcd: %.wlf
+	wlf2vcd $*.wlf > $*.vcd
 
+%.saif: %.vcd
+	vcd2saif -i $*.vcd -o $*.saif
 

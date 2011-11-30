@@ -1,11 +1,11 @@
 Engineer: Spenser Gilliland
 Company: IIT ECASP Lab
 License: GPLv3
-Date: 10-20-2011
+Date: 11-30-2011
 
 Required Tools:
-   Icarus Verilog Simulator
-   GTKWave
+   Synopsys Synthesis
+   Modelsim 
 
 To run:
    make run

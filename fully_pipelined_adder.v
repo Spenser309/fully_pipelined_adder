@@ -42,8 +42,6 @@ module fully_pipelined_adder(s,c,a,b,cin,clk);
     wire [WIDTH-1:0] b_d [WIDTH-1:0]; /* Not all of the bits are used */
     wire             c_d [WIDTH:0]; /* The WIDTH array element is the results at the end of the pipeline */ 
     
-    
-    
     /* Input to the pipeline */
     assign a_d[0] = a;
     assign b_d[0] = b;
@@ -68,7 +66,7 @@ module fully_pipelined_adder(s,c,a,b,cin,clk);
             
             /* For all other bits of A except the current bit copy from a_q */
             for(j=0; j < WIDTH; j = j+1) begin: comp_a_d
-                if(j == i)
+                if(j == i) 
                     assign a_d[i+1][j] = s_i;
                 else
                     assign a_d[i+1][j] = a_q[j];
