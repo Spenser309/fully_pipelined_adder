@@ -16,7 +16,7 @@ module dff(q,d,en,rst,clk);
     always @(posedge clk)
        if(rst == 1'b1)
           q <= 'b0;
-       else if(en == 1'b1) 
+       else 
           q <= d;
         
 endmodule
@@ -83,9 +83,8 @@ module fully_pipelined_adder(s,c,a,b,cin,en,rst,clk);
                 assign b_d[i+1][WIDTH-1:i+1] = b_q[WIDTH-1:i+1]; /* Don't copy the current bit */
         end
     endgenerate
-    
-    /* Output of the pipeline */
-    dff #(WIDTH) sreg(s,a_d[WIDTH],en,clk);
-    dff #(1) creg(c,c_d[WIDTH], en, clk);
+   
+    assign s = a_d[WIDTH];
+    assign c = c_d[WIDTH];
 endmodule
 
