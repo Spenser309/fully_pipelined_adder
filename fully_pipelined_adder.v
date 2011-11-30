@@ -13,7 +13,8 @@ module dff(q,d,en,clk);
     input wire clk;
 
     always @(posedge clk)
-        q <= d;
+       if(en == 1'b1) 
+          q <= d;
         
 endmodule
 
