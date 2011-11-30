@@ -15,7 +15,8 @@ module t_fully_pipelined_adder;
    reg [WIDTH-1:0] a;
    reg [WIDTH-1:0] b;
    reg             c;
-   
+   reg             en;
+
    wire [WIDTH-1:0] s;
    wire             carry;
 
@@ -53,15 +54,16 @@ module t_fully_pipelined_adder;
       #(clk_period/2) clk = ! clk;
    end
 	
-   fully_pipelined_adder #(WIDTH) uut(s,carry,a,b,c,clk);
+   fully_pipelined_adder #(WIDTH) uut(s,carry,a,b,c,en,clk);
 
    initial begin
       //$dumpfile("t_fully_pipelined_adder.lxt");
       $dumpvars(0, t_fully_pipelined_adder);
       
       /* Hold the clock at zero initially */
-      clk = 0;
-      
+      clk = 1'b0;
+      en = 1'b1;
+
       for(i = 0; i < WIDTH; i = i + 1) 
       fork : GEN_LOADS
          automatic integer thread_id = i;

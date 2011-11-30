@@ -1,0 +1,74 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{url}
+\author{Spenser Gilliland\\
+\url{Spenser309@gmail.com}\\
+ID:A20254941}
+\title{Final Project Proposal: Quantitative Evaluation of RTL Power Reduction Techniques}
+
+\begin{document}
+
+\maketitle
+\bigskip
+
+\begin{abstract}
+Power reduction of integrated circuits is increasingly important due to current heat dissipation and battery capacity limits.  This project utilizes a number of techniques to reduce the power consumption of a pipelined adder.  Specifically, glitch reduction, operand isolation, enhanced clock gating and precomputation logic are utilized. The adder is a custom design already implemented in verilog available on the web from \cite{code}.
+\end{abstract}
+
+\pagebreak
+
+\section{Objective}
+The objective of this project is to quantify the effect on power reduction of the various low power techniques.  The project is based on my design of a pipelined 32 bit adder implemented in Verilog.
+
+\section{Work Plan}
+There will be a total of 6 stages from which artifacts will be generated.
+
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline Stages & Description \\
+\hline 
+\hline Stage 0 & Benchmarks of the original circuit. \\ 
+\hline Stage 1 & Benchmarks after enhanced clock gating \\ 
+\hline Stage 2 & Benchmarks after glitch reduction \\ 
+\hline Stage 3 & Benchmarks after operand isolation \\ 
+\hline Stage 4 & Benchmarks after precomputation logic \\ 
+\hline Stage 5 & Benchmarks utilizing all beneficial techniques \\ 
+\hline 
+\end{tabular} 
+\end{center}
+
+For each stage, a patch file will be provided.  A patch file provides a difference of the source files of the design.
+
+In order to determine the relative merits of each of these techniques the following metrics will be recorded and analyzed.
+
+\begin{center}
+\begin{tabular}{|c|}
+\hline Metrics \\
+\hline 
+\hline Total Power \\
+\hline Maximum Frequency \\
+\hline Total Area \\
+\hline 
+\end{tabular}
+\end{center}
+
+
+\section{Testbench}
+
+The testbench will be an exhaustive test bench of all reasonable combinations of the circuit.  In all possible pipeline stages.  This will be an enhancement to the current test bench.
+
+\section{Expected Results}
+
+I expect that each technique will reduce the power consumption of the pipelined adder and the overall design will be increased in quality.
+
+\begin{thebibliography}{9}
+
+\bibitem{requirements} ECE 530 High Performance VLSI/IC Systems Term Project (Fall 2011)
+\bibitem{code} \url{https://github.com/Spenser309/fully_pipelined_adder/}
+
+\end{thebibliography}
+
+\end{document}

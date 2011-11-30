@@ -1,0 +1,16 @@
+transcript
+command.log
+default.svf
+dump.vcd
+*.vcd
+*.saif
+*.wlf
+*.log
+*.area
+*.power
+*.timing
+*.ini
+work-*/
+*.aux
+*.pdf
+*.swp
